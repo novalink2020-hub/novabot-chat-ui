@@ -1,0 +1,663 @@
+/* =========================================================
+   NovaBot v7.5 – App UI (Mobile / Tablet / Desktop)
+   Fullscreen Chat – Intercom Premium Header
+   ========================================================= */
+
+:root {
+  --nova-blue: #1b577c;
+  --nova-orange: #fe930e;
+  --nova-bg-dark: #0b1824;
+  --nova-font: "Tajawal", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --nova-bg-main: #050b14;
+  --nova-bg-main2: #101f33;
+  --nova-text-main: #e3edf9;
+  --nova-text-muted: rgba(196, 210, 230, 0.9);
+  --nova-bubble-bot-bg: rgba(12, 26, 44, 0.96);
+  --nova-bubble-bot-border: rgba(192, 209, 224, 0.35);
+  --nova-bubble-user-bg: linear-gradient(135deg, #1b577c, #13405b);
+  --nova-bubble-user-text: #fdfdff;
+  --nova-header-card-bg: linear-gradient(135deg, #0c1724, #152a40);
+  --nova-version-card-bg: rgba(11, 24, 38, 0.95);
+  --nova-footer-bg: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  --nova-input-bg: rgba(7, 15, 24, 0.98);
+  --nova-input-border: rgba(192, 209, 224, 0.5);
+  --nova-input-text: #f5f7ff;
+  --nova-send-bg: linear-gradient(135deg, #fe930e, #ffb24c);
+  --nova-send-text: #10171f;
+  --nova-card-bg: rgba(10, 22, 36, 0.96);
+  --nova-card-border: rgba(192, 209, 224, 0.35);
+  --nova-link-text: #fe930e;
+}
+
+/* ============ صفحة التطبيق ============ */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: var(--nova-font);
+  background: radial-gradient(circle at 0% 0%, var(--nova-bg-main2), var(--nova-bg-main) 60%);
+  color: var(--nova-text-main);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+.nova-page {
+  min-height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle at 0% 0%, var(--nova-bg-main2), var(--nova-bg-main) 60%);
+  color: var(--nova-text-main);
+}
+
+/* ============ الهيدر الزجاجي ============ */
+
+.nova-app-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.nova-app-header-glass {
+  position: relative;
+  padding: 10px 12px 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: linear-gradient(
+    to bottom,
+    rgba(5, 11, 20, 0.88) 0%,
+    rgba(5, 11, 20, 0.82) 40%,
+    rgba(5, 11, 20, 0.6) 100%
+  );
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(192, 209, 224, 0.14);
+}
+
+/* المستطيل الرئيسي (يمين) */
+
+.nova-header-main-card {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 18px;
+  background: var(--nova-header-card-bg);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.nova-header-main-avatar {
+  width: 36px;
+  height: 52px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(9, 19, 30, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid rgba(254, 147, 14, 0.75);
+  padding: 2px;
+}
+
+.nova-header-main-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nova-header-main-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nova-header-main-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+}
+
+.nova-header-main-subtitle {
+  font-size: 10.5px;
+  color: rgba(233, 243, 255, 0.88);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.nova-header-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #1ec070;
+  box-shadow: 0 0 10px rgba(30, 192, 112, 0.8);
+}
+
+/* المستطيل الصغير – إصدار */
+
+.nova-header-version-card {
+  padding: 6px 10px;
+  border-radius: 16px;
+  background: var(--nova-version-card-bg);
+  color: rgba(233, 243, 255, 0.92);
+  font-size: 10.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(192, 209, 224, 0.18);
+}
+
+/* ============ جسم المحادثة ============ */
+
+.nova-app-body {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.nova-chat-body {
+  height: 100%;
+  overflow-y: auto;
+  padding: 8px 10px 90px;
+  background: linear-gradient(
+    135deg,
+    var(--nova-bg-main) 0%,
+    var(--nova-bg-main2) 40%,
+    #050b14 100%
+  );
+}
+
+.nova-chat-body::-webkit-scrollbar {
+  width: 6px;
+}
+.nova-chat-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.nova-chat-body::-webkit-scrollbar-thumb {
+  background: rgba(192, 209, 224, 0.4);
+  border-radius: 10px;
+}
+
+/* ============ فقاعات الرسائل ============ */
+
+.nova-msg-row {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.nova-msg-row.nova-user {
+  justify-content: flex-end;
+}
+
+.nova-msg-row.nova-bot {
+  justify-content: flex-start;
+}
+
+.nova-bubble {
+  max-width: 78%;
+  padding: 9px 11px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.7;
+  word-wrap: break-word;
+  word-break: break-word;
+  animation: novaBubbleIn 0.18s ease-out;
+}
+
+@keyframes novaBubbleIn {
+  0% {
+    opacity: 0;
+    transform: translateY(4px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* فقاعة المستخدم */
+
+.nova-bubble-user {
+  background: var(--nova-bubble-user-bg);
+  color: var(--nova-bubble-user-text);
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 4px 12px rgba(10, 26, 44, 0.6);
+}
+
+/* فقاعة نوفا */
+
+.nova-bubble-bot {
+  background: var(--nova-bubble-bot-bg);
+  border: 1px solid var(--nova-bubble-bot-border);
+  color: var(--nova-text-main);
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.65);
+  position: relative;
+}
+
+.nova-bot-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+  font-size: 11px;
+  color: rgba(227, 237, 249, 0.95);
+}
+
+.nova-bot-header-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(9, 19, 30, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nova-bot-header-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nova-bot-name {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.nova-bubble-content {
+  font-size: 13px;
+}
+
+.nova-bubble-content a {
+  color: #e9f4ff;
+  text-decoration: underline;
+}
+.nova-bubble-content a:hover {
+  color: #ffe0a6;
+}
+
+/* ============ مؤشر الكتابة ============ */
+
+.nova-typing {
+  font-size: 11px;
+  color: var(--nova-text-main);
+  margin-top: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.nova-typing-dots {
+  display: inline-flex;
+  gap: 2px;
+}
+.nova-dot-typing {
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--nova-orange);
+  animation: novaTyping 1.2s infinite ease-in-out;
+}
+.nova-dot-typing:nth-child(1) {
+  animation-delay: 0s;
+}
+.nova-dot-typing:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.nova-dot-typing:nth-child(3) {
+  animation-delay: 0.4s;
+}
+@keyframes novaTyping {
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+/* ============ الفوتر / حقل الكتابة ============ */
+
+.nova-app-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 15;
+}
+
+.nova-footer-row {
+  padding: 8px 10px calc(10px + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  flex-direction: row-reverse;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--nova-footer-bg);
+  border-top: 1px solid rgba(192, 209, 224, 0.2);
+}
+
+.nova-input-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.nova-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 7px 10px 7px 52px;
+  border-radius: 14px;
+  border: 1px solid var(--nova-input-border);
+  background: var(--nova-input-bg);
+  color: var(--nova-input-text);
+  font-size: 13px;
+  font-family: var(--nova-font);
+  outline: none;
+  resize: none;
+  min-height: 32px;
+  max-height: 96px;
+  line-height: 1.6;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.nova-input::placeholder {
+  color: rgba(180, 199, 220, 0.82);
+}
+
+.nova-input:focus {
+  border-color: rgba(254, 147, 14, 0.85);
+  box-shadow: 0 0 0 1px rgba(254, 147, 14, 0.4);
+  /* نحافظ على نفس الخلفية بدون تغميق زائد */
+  background: var(--nova-input-bg);
+}
+
+.nova-input-hint {
+  position: absolute;
+  left: 14px;
+  bottom: 3px;
+  font-size: 10px;
+  color: rgba(180, 199, 220, 0.7);
+}
+
+/* زر الإرسال */
+
+.nova-send-btn {
+  border-radius: 999px;
+  border: none;
+  padding: 9px 11px;
+  background: var(--nova-send-bg);
+  color: var(--nova-send-text);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--nova-font);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(254, 147, 14, 0.45);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease,
+    opacity 0.15s ease;
+  min-width: 40px;
+  min-height: 40px;
+}
+.nova-send-btn span {
+  font-size: 15px;
+}
+.nova-send-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+  box-shadow: 0 10px 24px rgba(254, 147, 14, 0.55);
+}
+.nova-send-btn:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 4px 14px rgba(254, 147, 14, 0.35);
+}
+.nova-send-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+  box-shadow: none;
+}
+
+/* ============ البطاقات ============ */
+
+.nova-card {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--nova-card-border);
+  background: var(--nova-card-bg);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
+  font-size: 13px;
+  direction: rtl;
+}
+.nova-card-header {
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #f5f7ff;
+}
+.nova-card-text {
+  font-size: 12px;
+  color: rgba(222, 234, 248, 0.9);
+  margin-bottom: 8px;
+}
+.nova-card-input {
+  width: 100%;
+  padding: 7px 9px;
+  border-radius: 8px;
+  border: 1px solid rgba(192, 209, 224, 0.7);
+  background: rgba(5, 13, 22, 0.9);
+  color: #e8f0ff;
+  font-family: var(--nova-font);
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.nova-card-input::placeholder {
+  color: rgba(196, 210, 230, 0.82);
+}
+.nova-card-actions {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  justify-content: flex-start;
+}
+.nova-card-btn {
+  border-radius: 999px;
+  border: none;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: var(--nova-font);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.nova-card-btn-primary {
+  background: linear-gradient(135deg, #fe930e, #ffb24c);
+  color: #10171f;
+  box-shadow: 0 3px 10px rgba(254, 147, 14, 0.45);
+}
+.nova-card-btn-secondary {
+  background: rgba(11, 24, 38, 0.9);
+  color: #e0ecff;
+  border: 1px solid rgba(192, 209, 224, 0.6);
+}
+.nova-card-note {
+  margin-top: 6px;
+  font-size: 11px;
+  color: rgba(196, 210, 230, 0.85);
+}
+.nova-card-separator {
+  height: 6px;
+}
+
+/* روابط */
+
+.nova-link {
+  color: var(--nova-link-text);
+  text-decoration: none;
+  font-weight: 500;
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.nova-link:hover {
+  color: #fe930e;
+  text-shadow: 0 0 6px rgba(254, 147, 14, 0.7);
+  box-shadow: 0 2px 0 rgba(254, 147, 14, 0.8);
+}
+
+/* ============ Light Mode – Mobile/Tablet فقط ============ */
+
+@media (max-width: 1024px) and (prefers-color-scheme: light) {
+  :root {
+    --nova-bg-main: #f5f7fc;
+    --nova-bg-main2: #dde6f5;
+    --nova-text-main: #0b1a2a;
+    --nova-text-muted: rgba(55, 72, 96, 0.9);
+    --nova-bubble-bot-bg: rgba(255, 255, 255, 0.96);
+    --nova-bubble-bot-border: rgba(27, 87, 124, 0.16);
+    --nova-bubble-user-bg: linear-gradient(135deg, #1b577c, #13405b);
+    --nova-bubble-user-text: #ffffff;
+    --nova-header-card-bg: rgba(255, 255, 255, 0.9);
+    --nova-version-card-bg: rgba(255, 255, 255, 0.85);
+    --nova-footer-bg: linear-gradient(
+      to top,
+      rgba(245, 247, 252, 0.98),
+      rgba(245, 247, 252, 0.96)
+    );
+    --nova-input-bg: rgba(255, 255, 255, 0.98);
+    --nova-input-border: rgba(27, 87, 124, 0.35);
+    --nova-input-text: #0b1a2a;
+    --nova-card-bg: rgba(255, 255, 255, 0.97);
+    --nova-card-border: rgba(27, 87, 124, 0.16);
+    --nova-link-text: #1b577c;
+  }
+
+  .nova-page {
+    background: linear-gradient(180deg, #f5f7fc, #e7edf9);
+  }
+
+  .nova-app-header-glass {
+    background: linear-gradient(
+      to bottom,
+      rgba(245, 247, 252, 0.95),
+      rgba(245, 247, 252, 0.9),
+      rgba(245, 247, 252, 0.8)
+    );
+    border-bottom: 1px solid rgba(27, 87, 124, 0.16);
+  }
+
+  .nova-header-main-card {
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow:
+      0 10px 26px rgba(27, 87, 124, 0.12),
+      0 0 0 1px rgba(255, 255, 255, 0.8);
+  }
+
+  .nova-header-main-title {
+    color: #112236;
+  }
+
+  .nova-header-main-subtitle {
+    color: rgba(36, 58, 92, 0.92);
+  }
+
+  .nova-header-version-card {
+    background: rgba(255, 255, 255, 0.96);
+    color: #112236;
+    border-color: rgba(27, 87, 124, 0.18);
+    box-shadow: 0 8px 20px rgba(27, 87, 124, 0.16);
+  }
+
+  .nova-chat-body {
+    background: linear-gradient(180deg, #f5f7fc, #e7edf9);
+  }
+
+  .nova-bubble-bot {
+    box-shadow: 0 3px 10px rgba(27, 87, 124, 0.14);
+  }
+
+  .nova-bubble-user {
+    box-shadow: 0 4px 12px rgba(27, 87, 124, 0.4);
+  }
+
+  .nova-bot-header {
+    color: #1b3a5b;
+  }
+
+  .nova-bot-name {
+    color: #112236;
+  }
+
+  .nova-typing {
+    color: #112236;
+  }
+
+  .nova-card {
+    box-shadow: 0 8px 20px rgba(27, 87, 124, 0.12);
+  }
+
+  .nova-input::placeholder {
+    color: rgba(90, 112, 140, 0.85);
+  }
+}
+
+/* ============ Responsive Tweaks ============ */
+
+@media (max-width: 768px) {
+  .nova-header-main-card {
+    padding: 6px 9px;
+  }
+  .nova-header-main-avatar {
+    width: 32px;
+    height: 48px;
+  }
+  .nova-header-main-title {
+    font-size: 12px;
+  }
+  .nova-header-main-subtitle {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .nova-page {
+    max-width: 480px;
+    margin: 0 auto;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.65),
+      0 0 0 1px rgba(255, 255, 255, 0.04);
+  }
+}
