@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>NovaBot Chat | NovaLink AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./novabot.css" />
+</head>
+<body>
+  <div class="nova-page">
+    <!-- هيدر زجاجي يحتوي المستطيلين -->
+    <header class="nova-app-header">
+      <div class="nova-app-header-glass">
+        <div class="nova-header-main-card">
+          <div class="nova-header-main-avatar">
+            <img
+              src="https://assets.zyrosite.com/YD0w46zZ5ZIrwlP8/novabot-2-f081v1SXHunuZjwP.png"
+              alt="NovaBot Avatar"
+            />
+          </div>
+          <div class="nova-header-main-text">
+            <div class="nova-header-main-title">NOVA BOT</div>
+            <div class="nova-header-main-subtitle">
+              <span class="nova-header-status-dot"></span>
+              <span>مساعدك الذكي لتطوير الأعمال</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="nova-header-version-card">
+          <span>NovaBot v7.5</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- جسم المحادثة -->
+    <main class="nova-app-body">
+      <div id="novaChatBody" class="nova-chat-body"></div>
+    </main>
+
+    <!-- الفوتر – حقل الكتابة -->
+    <footer class="nova-app-footer">
+      <div class="nova-footer-row">
+        <div class="nova-input-wrapper">
+          <textarea
+            id="novaInput"
+            class="nova-input"
+            placeholder="اسأل NovaBot عن الذكاء الاصطناعي أو تطوير أعمالك…"
+          ></textarea>
+          <div class="nova-input-hint"></div>
+        </div>
+        <button class="nova-send-btn" id="novaSendBtn" aria-label="إرسال">
+          <span>➤</span>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <script src="./novabot.js" defer></script>
+</body>
+</html>
